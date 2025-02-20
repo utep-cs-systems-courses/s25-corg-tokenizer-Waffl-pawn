@@ -31,15 +31,21 @@ int non_space_char(char c){
 char *token_start(char *str){
 
   while(*str != '\0'){
-    if(space_char(*str) == 1){
+    if(non_space_char(*str) == 1){
       return str;
     }
-    *str += 1;
+    str++;
   }
+  return NULL;
 }
 
 /* Returns a pointer terminator char following *token */
-char *token_terminator(char *token);
+char *token_terminator(char *token){
+  while(non_space_char){
+    token++;
+  }
+  return *token;
+}
 
 /* Counts the number of tokens in the string argument. */
 int count_tokens(char *str);
