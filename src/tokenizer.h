@@ -30,12 +30,11 @@ int non_space_char(char c){
    str does not contain any tokens. */
 char *token_start(char *str){
 
-  while(str != 0){
-    char tmpStr = str;
-    if(space_char(str) == 1){
+  while(*str != '\0'){
+    if(space_char(*str) == 1){
       return str;
     }
-    str += 1;
+    *str += 1;
   }
 }
 
