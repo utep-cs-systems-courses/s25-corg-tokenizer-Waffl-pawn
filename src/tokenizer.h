@@ -41,7 +41,7 @@ char *token_start(char *str){
 
 /* Returns a pointer terminator char following *token */
 char *token_terminator(char *token){
-  while(non_space_char(*token){
+  while(non_space_char(*token)){
     token++;
   }
   return token;
@@ -50,16 +50,28 @@ char *token_terminator(char *token){
 /* Counts the number of tokens in the string argument. */
 int count_tokens(char *str){
   int count = 0;
-  while(*str != '\0'){
+  while(*str != '\0' && str == NULL){
     str = token_start(str);
     str = token_terminator(str);
     count++;
+    str++;
   }
+  return count;
 }
 
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
-char *copy_str(char *inStr, short len);
+char *copy_str(char *inStr, short len){
+  char *newStr = (char *)malloc((len + 1)*sizeof(char));
+
+  for (int i = 0; i < len; i++) {
+    *(newStr+i) = *inStr+i;
+  }
+
+  *(newStr+(len)) = '\0';
+
+  return newStr;
+}
 
 /* Returns a freshly allocated zero-terminated vector of freshly allocated 
    space-separated tokens from zero-terminated str.
