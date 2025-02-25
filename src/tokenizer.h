@@ -109,10 +109,10 @@ char **tokenize(char* str) {
 /* Prints all tokens. */
 void print_tokens(char **tokens){
   int i = 0;
-  int num_tokens = count_tokens(*token);
   
-  while(i < num_tokens){
-    printf("tokens[%i] = "%s"\n", i,tokens[i]);
+  while(*tokens[i] != '\0'){
+    printf("tokens[%d] = \"%s\"\n", i,tokens[i]);
+    i++;
   }
 }
 
