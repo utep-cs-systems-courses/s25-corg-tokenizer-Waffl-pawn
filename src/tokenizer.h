@@ -82,7 +82,22 @@ char *copy_str(char *inStr, short len){
      tokens[2] = "string" 
      tokens[3] = 0
 */
-char **tokenize(char* str);
+char **tokenize(char* str){
+  char *start = token_start(str);
+  char *end = token_terminator(str);
+  char **tokens;
+ 
+  for(int i = 0; i < str_length){
+    int length = start - end;
+    int temp_cpy = copy_str(start,length);
+
+    tokens[i] = temp_cpy;
+
+    start = token_start(end);
+    end = token_terminator(start);
+  }
+  return tokens;
+}
 
 /* Prints all tokens. */
 void print_tokens(char **tokens);
