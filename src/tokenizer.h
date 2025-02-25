@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _TOKENIZER_
@@ -82,25 +83,38 @@ char *copy_str(char *inStr, short len){
      tokens[2] = "string" 
      tokens[3] = 0
 */
-char **tokenize(char* str){
+char **tokenize(char* str) {
+  int num_tokens = count_tokens(str);
+  char **tokens = (char **)malloc((num_tokens + 1) * sizeof(char *));
+
+  int i = 0;
   char *start = token_start(str);
-  char *end = token_terminator(str);
-  char **tokens;
- 
-  for(int i = 0; i < str_length){
-    int length = start - end;
-    int temp_cpy = copy_str(start,length);
 
-    tokens[i] = temp_cpy;
+  while (i < num_tokens) {
+    char *end = token_terminator(start);
+    int length = end - start;
 
+    tokens[i] = copy_str(start, length);
+
+    i++;
     start = token_start(end);
-    end = token_terminator(start);
   }
+
+  tokens[i] = '\0';
   return tokens;
 }
 
+
+
 /* Prints all tokens. */
-void print_tokens(char **tokens);
+void print_tokens(char **tokens){
+  int i = 0;
+  int num_tokens = count_tokens(*token);
+  
+  while(i < num_tokens){
+    printf("tokens[%i] = "%s"\n", i,tokens[i]);
+  }
+}
 
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens);
