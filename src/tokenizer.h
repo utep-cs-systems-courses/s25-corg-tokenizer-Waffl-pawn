@@ -114,14 +114,10 @@ void print_tokens(char **tokens){
 }
 
 /* Frees all tokens and the vector containing themx. */
-void free_tokens(char **tokens){
-  char *start = toekn_start(*tokens);
-  while(*tokens != '\0'){
-    char *word_start = token_start(*tokens);
-    char *end = token_terminator(word_start);
+void free_tokens(char **tokens) {  
+  while (**tokens != '\0') {
+    free(*tokens);
     tokens++;
   }
-  tokens = tokens - end;
-  return tokens;
 }
 #endif
