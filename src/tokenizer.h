@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #ifndef _TOKENIZER_
@@ -104,8 +103,6 @@ char **tokenize(char* str) {
   return tokens;
 }
 
-
-
 /* Prints all tokens. */
 void print_tokens(char **tokens){
   int i = 0;
@@ -117,6 +114,14 @@ void print_tokens(char **tokens){
 }
 
 /* Frees all tokens and the vector containing themx. */
-void free_tokens(char **tokens);
-
+void free_tokens(char **tokens){
+  char *start = toekn_start(*tokens);
+  while(*tokens != '\0'){
+    char *word_start = token_start(*tokens);
+    char *end = token_terminator(word_start);
+    tokens++;
+  }
+  tokens = tokens - end;
+  return tokens;
+}
 #endif
